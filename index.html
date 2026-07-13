@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Replacement Simulator</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="app">
+
+        <header class="hdr">
+            <div class="hdr-text">
+                <div class="hdr-eyebrow"><span class="cursor"></span>system.memory.sim</div>
+                <h1>Page Replacement Algorithm Simulator</h1>
+                <p>PF110 - Operating System | St. John Paul II College of Davao</p>
+            </div>
+            <div class="hdr-badge">
+                FIFO & LRU
+                <span class="live-pill">
+                    <span class="live-dot"></span>LIVE
+                </span>
+            </div>
+        </header>
+
+        <div class="error-banner" id="errBanner">
+            <div class="error-icon">⚠</div>
+            <div class="error-text">
+                <strong id="errTitle">Invalid input</strong>
+                <span id="errMsg"></span>
+            </div>
+        </div>
+
+        <div class="warning-banner" id="warnBanner">
+            <div class="warning-icon">⚠</div>
+            <div class="warning-text">
+                <strong>Invalid character detected</strong>
+                <span id="warnMsg"></span>
+            </div>
+        </div>
+
+        <section class="ctrl">
+            <div class="ctrl-row">
+                <div class="fld">
+                    <label for="algo">Algorithm</label>
+                    <select id="algo">
+                        <option value="FIFO">FIFO</option>
+                        <option value="LRU">LRU</option>
+                        <option value="BOTH">Both (FIFO + LRU)</option>
+                    </select>
+                </div>
+                <div class="fld">
+                    <label for="frames">Frames</label>
+                    <input type="number" id="frames" min="1" max="20" value="4" />
+                    <div class="spinner-wrap" id="spinnerWrap">
+                        <button type="button" id="spinUp" aria-label="Increase">▲</button>
+                        <button type="button" id="spinDown" aria-label="Decrease">▼</button>
+                    </div>
+                </div>
+                <div class="fld wide">
+                    <label for="refs">Page reference string</label>
+                    <input type="text" id="refs" value="" placeholder="e.g. 7 0 1 2 3 or A B C D" />
+                    <div class="input-hint">Spaces or commas - use either all numbers or all letters, not both. Negative numbers aren't allowed; . ' / are allowed with a warning.</div>
+                </div>
+                <div class="btns">
+                    <button class="btn btn-random" id="randomBtn">random()</button>
+                    <button class="btn btn-clear-input" id="clearInputBtn">clear()</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="out"></div>
+        <div id="empty" class="empty" style="display:none">
+            <div class="empty-icon">⌨</div>
+            <div>Start typing page references above...</div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
